@@ -5,7 +5,7 @@ from django.utils import timezone
 
 class Post(models.Model):
     # создаём поля для объекта модели поста, который будет находится в бд
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE) # ссылка на другую модель
+    #author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE) # ссылка на другую модель
     title = models.CharField(max_length=200) # ограниченый размер переменной
     text = models.TextField() # текст для поста
     created_date = models.DateTimeField(default=timezone.now) # дата

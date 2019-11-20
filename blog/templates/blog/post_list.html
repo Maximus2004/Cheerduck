@@ -42,10 +42,10 @@
           background: rgb(220, 0, 0);
           color: #fff;
         }
-        </style>
+    </style>
         
         
-        <div align=start>
+    <div align=start>
         <div style="width:220px; border:1px solid #c0c0c0; padding-left:1000px;">
         <table id="calendar"  border="0" cellspacing="0" cellpadding="1">
           <thead>
@@ -55,9 +55,9 @@
           <tbody></tbody>
         </table>
         </div>
-        </div>
+    </div>
         
-        <script>
+    <script>
         function calendar(id, year, month) {
         var Dlast = new Date(year,month+1,0).getDate(),
             D = new Date(year,month,Dlast),
@@ -98,6 +98,6 @@
         document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(3)').onclick = function() {
           calendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month)+1);
         }
-        </script>
+    </script>
 {% endblock %}
 

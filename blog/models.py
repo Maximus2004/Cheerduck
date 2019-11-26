@@ -17,3 +17,10 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+class User(models.Model):
+    username = models.CharField(max_length=100) # ограниченый размер переменной, потому что user не должен быть большим
+    password = models.TextField() # пароль может быть любой длины
+
+    def __str__(self):
+        return self.username

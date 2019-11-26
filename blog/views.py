@@ -3,6 +3,7 @@ from django.utils import timezone
 from .models import Post
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
+from .forms import UserForm
 from django.shortcuts import redirect
 
 def post_list(request):
@@ -39,3 +40,14 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
+def user_new(request):
+    if request.method == "POST":
+        user_form = UserForm(request.POST)
+        if user_form.is_valid():
+            user = user_form.save(commit=True)
+            user.save()
+            return redirect('post_list')
+    else:
+        user_form = UserForm()
+    return render(request, 'blog/new_user.html', {'user_form': user_form})

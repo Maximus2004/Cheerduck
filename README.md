@@ -1,2 +1,3 @@
-# Djangogirls blog
-The first app with Djangogirls. Now I'm learning with this app 
+# Cheerduck
+If you want to share your experience - come to us! 
+If you want to get new knowledge-come to us!

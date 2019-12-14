@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="consultation">
+        <b>{{ consultation.theme }}</b></div>
+        <div><b>Создано:</b>{{ consultation.creation }}</div>
+        <div><b>Время проведения:</b>{{ consultation.date }}</div>
+        <div><b>Электронная почта автора:</b>{{ consultation.email }}</div>
+        <div><b>Описание:</b>{{ consultation.discription }}</div>
+        <div><b>Предполагаемая аудитория: </b>{{ consultation.spectators }}</div>
+        <div><b>Продолжительность:</b>{{ consultation.longliness }}</div>
+        <p></p>
+        <a class="btn btn-default" href="{% url 'consultation_edit' pk=consultation.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    </div>
+{% endblock %}

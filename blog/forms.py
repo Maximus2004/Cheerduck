@@ -2,6 +2,7 @@ from django import forms
 
 from .models import Post
 from .models import User
+from .models import Consultation
 
 
 class PostForm(forms.ModelForm):
@@ -13,5 +14,15 @@ class PostForm(forms.ModelForm):
 class UserForm(forms.ModelForm):
 
     class Meta:
+        password = forms.CharField(widget=forms.PasswordInput)
         model = User
-        fields = ('username', 'password',)
+        widgets = {
+            'password': forms.PasswordInput(),
+        }
+        fields = ('username', 'surname', 'email', 'password', 'clas')
+
+class ConsultationForm(forms.ModelForm):
+
+    class Meta:
+        model = Consultation
+        fields = ('creation', 'date', 'email', 'theme', 'discription', 'spectators', 'longliness')

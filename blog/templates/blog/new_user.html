@@ -1,9 +1,150 @@
-{% extends 'blog/base.html' %}
-
 {% block content %}
-    <h1>New user</h1>
-    <form method="POST" class="user-form">{% csrf_token %}
-        {{ user_form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
-{% endblock %}
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Регистрация</title>
+<head>
+   <link rel="stylesheet" href="1stdesign.css" />
+   <link 
+      href="https://fonts.googleapis.com/css?family=Domine&display=swap" 
+      rel="stylesheet" 
+      />
+   <title>Summary</title>
+   <style>
+      * {
+      font-family: "Domine", serif;
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+      }
+      body {
+      background: url(https://media.discordapp.net/attachments/616712991030771806/650723566211301386/unknown.png?width=1014&height=676) no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      }
+      nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      min-height: 8vh;
+      background: rgba(0, 0, 0, 0.8);
+      width: 100%;
+      }
+      .logo {
+      color: white;
+      font-size: 28px;
+      font-weight: 900;
+      }
+      .nav-links {
+      width: 30%;
+      display: flex;
+      justify-content: space-around;
+      list-style: none;
+      }
+      .nav-link {
+      color: white;
+      font-size: 28px;
+      font-weight: 900;
+      text-decoration: none;
+      }
+      .content {
+      border-radius: 1%;
+      padding: 40px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.4);
+      width: 80%;
+      color: white;
+      }
+      .content p {
+      padding: 10px 0px 10px 0px;
+      font-size: 30px;
+      }
+      .burger {
+      display: none;
+      cursor: pointer;
+      }
+      .burger div {
+      width: 33px;
+      height: 3px;
+      background: white;
+      margin: 8px;
+      }
+      @media screen and (max-width: 1400px) {
+      .nav-links {
+      width: 50%;
+      }
+      }
+      @media screen and (max-width: 800px) {
+      body {
+      overflow-x: hidden;
+      }
+      /* .con {
+      padding: 50px;
+      } */
+      .nav-links {
+      position: absolute;
+      right: 0px;
+      height: 82vh;
+      top: 8vh;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50%;
+      transform: translateX(100%);
+      transition: transform 0.5s ease-in;
+      }
+      .nav-links li {
+      opacity: 0;
+      }
+      .burger {
+      display: block;
+      }
+      }
+      input{
+      margin-left: 30px;
+      }
+      .nav-active{
+      transform: translate(0%);
+      }
+      @keyframes navLinkFade{
+      from{
+      opacity: 0;
+      transform: translateX(50px);
+      }
+      to{
+      opacity: 1;
+      transform: translateX(0px);
+      }
+      }
+   </style>
+</head>
+<body>
+   <div class= "body">
+   <nav>
+      <div class="logo">
+         <h2>Чердак</h2>
+      </div>
+      <ul class="nav-links">
+         <li><a class="nav-link" href="#">Забыли Пароль?</a></li>
+         <li><a class="nav-link" href="vxod.html">Войти</a></li>
+         </a></li> 
+      </ul>
+      <div class="burger">
+         <div class="line1"></div>
+         <div class="line2"></div>
+         <div class="line3"></div>
+      </div>
+   </nav>
+   <main>
+      <div class="content">
+         <form method="POST" class="user-form">
+            {% csrf_token %}
+            <html lang="en">
+               {{ user_form.as_p }}
+               <button type="submit" class="saveBtn">Save</button>
+         </form>
+   </main>
+   <script src="/js/app.js"></script> 
+   </div>
+   </body> 
+   </html>
+   {% endblock %}

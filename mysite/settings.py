@@ -21,13 +21,28 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 't-q)(npu79@7x7z@bij1b(5)3yxxt(tr(iam08@)3(k6v@5&!w'
+# ACCOUNT_EMAIL_UNIQUE = True
+# ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+AUTH_PROFILE_MODULE = 'models.UserProfile'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 # Application definition
+
+# ACCOUNT_LOGIN_URL = 'blog:account_login'
+# ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = ACCOUNT_LOGIN_URL
+# ACCOUNT_PASSWORD_RESET_REDIRECT_URL = ACCOUNT_LOGIN_URL
+# ACCOUNT_EMAIL_CONFIRMATION_URL = "blog:account_confirm_email"
+# ACCOUNT_SETTINGS_REDIRECT_URL = 'blog:account_settings'
+# ACCOUNT_PASSWORD_CHANGE_REDIRECT_URL = "blog:account_password"
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,7 +52,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'crispy_forms',
 ]
+
+LOGIN_REDIRECT_URL =  '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -49,6 +67,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mysite.urls'
+
+# DEFAULT_FROM_EMAIL = 'maks09062004@mail.ru'
+# EMAIL_HOST = "smtp.yoursmtpserver.ru"
+# EMAIL_PORT = 25
+# EMAIL_HOST_USER = "user"
+# EMAIL_HOST_PASSWORD = "pass"
 
 TEMPLATES = [
     {
@@ -118,3 +142,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# SITE_ID = 2

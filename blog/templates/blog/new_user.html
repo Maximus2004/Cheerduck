@@ -125,7 +125,7 @@
       </div>
       <ul class="nav-links">
          <li><a class="nav-link" href="#">Забыли Пароль?</a></li>
-         <li><a class="nav-link" href="vxod.html">Войти</a></li>
+         <li><a class="nav-link" href="{% url 'login' %}">Войти</a></li>
          </a></li> 
       </ul>
       <div class="burger">
@@ -138,12 +138,24 @@
       <div class="content">
          <form method="POST" class="user-form">
             {% csrf_token %}
-            <html lang="en">
-               {{ user_form.as_p }}
-               <button type="submit" class="saveBtn">Save</button>
+            <html lang="ru">
+              <!-- <p><label for="name">Имя</label>
+               <input type="text" id="name">{{ field.first_name }}</p>
+              <p><label for="surname">Фамилия</label>
+               <input type="text" id="surname">{{ field.last_name }}</p>
+              <p><label for="username">Имя пользователя</label>
+               <input type="text" id="surname">{{ field.clas }}</p>
+              <p><label for="email">Ваша почта</label>
+               <input type="text" id="surname">{{ field.email }}</p>
+              <p><label for="pass">Пароль</label>
+               <input type="password" id="pass">{{ field.password }}</p>
+              <p><label for="pass">Подтвержения пароля</label>
+               <input type="password" id="pass">{{ field.password2 }}</p>   
+               <p></p> -->
+               {{ form.as_p }}
+               <button type="submit" class="saveBtn">Зарегистрироваться</button>
          </form>
    </main>
-   <script src="/js/app.js"></script> 
    </div>
    </body> 
    </html>

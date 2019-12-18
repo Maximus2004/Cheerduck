@@ -8,16 +8,11 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    clas = models.CharField(max_length=2)
-
 class Post(models.Model):
     # создаём поля для объекта модели поста, который будет находится в бд
     #author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE) # ссылка на другую модель
-    title = models.CharField(max_length=200) # ограниченый размер переменной
-    text = models.TextField() # текст для поста
-    created_date = models.DateTimeField(default=timezone.now) # дата
+    title = models.CharField("Тема консультации", max_length=200) # ограниченый размер переменной
+    text = models.TextField("Раскрытие темы") # текст для поста
     published_date = models.DateTimeField(blank=True, null=True) # дата
 
     def publish(self):

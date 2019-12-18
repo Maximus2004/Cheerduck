@@ -8,11 +8,12 @@ from django.contrib.auth import views as v
 
 urlpatterns = [
     path('', views.cons_list, name='cons_list'),
+    path('suggs/', views.post_list, name='suggs_list'),
     path('cons/<int:pk>/', views.cons_detail, name='consultation_detail'),
-    path('post/<int:pk>/', views.post_detail, name='post_detail'),
-    path('post/new/', views.post_new, name='post_new'),
+    path('sugg/<int:pk>/', views.post_detail, name='post_detail'),
+    path('sugg/new/', views.post_new, name='sugg_new'),
     path('cons/<int:pk>/edit/', views.cons_edit, name='consultation_edit'),
-    path('post/<int:pk>/edit/', views.post_edit, name='post_edit'),
+    path('sugg/<int:pk>/edit/', views.post_edit, name='post_edit'),
     path('user/new/', views.user_new, name='user_new'),
     path('cons/new/', views.cons_new, name='consultation_new'),
     path('signup/', forms.RegisterFormView.as_view(), name='signup'),

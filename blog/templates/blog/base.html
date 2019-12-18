@@ -13,15 +13,20 @@
             body {
                 padding-left: 15px;
             }
-                        .page-header {
+            .page-header {
                 background-color: #ff9400;
                 margin-top: 0;
                 padding: 20px 20px 20px 40px;
             }
+
             .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
                 color: #ffffff;
                 font-size: 36pt;
                 text-decoration: none;
+            }
+            .newsugg {
+                padding-right: 90x;
+                font-size: 36pt;
             }
             .content {
                 margin-left: 40px;
@@ -31,6 +36,9 @@
             }
             .date {
                 color: #828282;
+            }
+            .content2{
+                margin-top: 0px;
             }
             .save {
                 float: right;
@@ -62,8 +70,8 @@
     <body>
         <div class="page-header">
                 <a href="{% url 'consultation_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-                <a href="{% url 'signup' %}" class="top-menu"><span class="glyphicon glyphicon-pencil"></span></a>
-                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-bookmark"></span></a>
+                <a href="{% url 'suggs_list' %}" class="top-menu"><span class="glyphicon glyphicon-th-list"></span></a>
+                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-user"></span></a>
                 <h1><a href="/">Cheerduck</a></h1>
         </div>
 

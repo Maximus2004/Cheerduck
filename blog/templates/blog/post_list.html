@@ -3,12 +3,14 @@ from . import views
 
 
 {% block content %}
+<h4>Список консультаций</h4>
     {% for consultation in consultations %}
         <div class="consultation">
                 <h1><a href="{% url 'consultation_detail' pk=consultation.pk %}">{{ consultation.theme }}</a></h1> <!--django будет искать url post_detail в urls; pk - первичный ключ, который идентефицирует каждый post-->
             <div class="date">   
-                <p>{{ consultation.date|linebreaksbr }} </p>
+                 <b>Дата проведения:</b> {{ consultation.date|linebreaksbr }}
             </div>
+            <p>
             <div class="text">
                 {{ consultation.discription }}
             </div>

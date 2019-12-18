@@ -9,8 +9,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'blog/post_list.html', {'posts': posts})
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    return render(request, 'blog/suggs_list.html', {'posts': posts})
 
 def cons_list(request):
     consultations = Consultation.objects.filter(creation__lte=timezone.now()).order_by('creation')

@@ -16,6 +16,7 @@ from . import views
             </div>
             <div> <b>Предполагаемая аудитория: </b> {{ consultation.spectators }}</div>
             <div> <b> Продолжительность: </b> {{ consultation.longliness }}</div>
+            <div> <b> Создатель: </b> {{ consultation.owner.username }}</div>
             <hr>
         </div>
     {% endfor %}

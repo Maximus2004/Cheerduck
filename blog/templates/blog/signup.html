@@ -226,7 +226,7 @@
       </div>
       <div class="flex-row">
         <p><font color="white"><h2 color="white">Класс:</h2></font></p>
-        {{ form.Class }}
+        {{ form.form }}
       </div>
       <div class="list">
         <div class='title'>
@@ -240,7 +240,7 @@
       </div>
         <li>Если все пункты выше выполнены, то ваше ваш пароль слишком прост и вам стоит его сменить</li>
       </div>
-      <input class='lf--submit' type='submit' value='Зарегистрироваться!'>
+      <input class='lf--submit' href="{% url 'login' %}" type='submit' value='Зарегистрироваться!'>
       <a class='lf--forgot' href="{% url 'login' %}">Уже зарегистрированы? Войти!</a>
     </form>
   </body>

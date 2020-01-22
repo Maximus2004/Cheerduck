@@ -3,7 +3,17 @@
 {% block content %}
     <h1>New consultation</h1>
     <form method="POST" class="consultation-form">{% csrf_token %}
-        {{ form.as_p }}
+        Время и дата проведения консультации
+        {{ form.date }}
+        Тема консультации
+        {{ form.theme }}
+        Раскрытие темы, подроюбное описание
+        {{ form.discription }}
+        Целевая аудитория
+        {{ form.spectators }}
+        Продолжительность консультации
+        {{ form.longliness }}
+        {{ form.owner }}
         <button type="submit" class="save btn btn-default">Push</button>
     </form>
 {% endblock %}

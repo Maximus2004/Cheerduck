@@ -32,8 +32,9 @@ ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-AUTH_PROFILE_MODULE = 'models.UserProfile'
+AUTH_PROFILE_MODULE = 'blog.UserModel'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+AUTH_USER_MODEL = 'blog.UserModel'
 
 # Application definition
 

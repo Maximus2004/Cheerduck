@@ -1,0 +1,8 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>New consultation</h1>
+    <form method="POST" class="consultation-form">{% csrf_token %}
+        {{ form.as_p }}
+    </form>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h4>Список предложений</h4>
+<a href="{% url 'sugg_new' %}" class="newsugg"><span class="glyphicon glyphicon-plus"></span></a>
+    {% for post in posts %}
+        <div class="post">
+                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1> <!--django будет искать url post_detail в urls; pk - первичный ключ, который идентефицирует каждый post-->
+            <div class="date">  
+                {% if post.published_date %}
+                    <div class="date">
+                        <b>Дата создания предожения: </b> {{ post.published_date|linebreaksbr }}
+                    </div>
+                {% endif %} 
+               <p>
+            </div>
+            <div class="text">
+                {{ post.text }}
+            </div>
+            <hr>
+            <p>
+            </div>
+            <div>
+                <ul>
+                    <li data-id="{{ like_obj.id }}" data-type="article" data-action="like" title="Одобряю">
+                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                        <span data-count="like">{{ like_obj.votes.likes.count }}</span>
+                    </li>
+                    <li data-id="{{ like_obj.id }}" data-type="article" data-action="dislike" title="Осуждаю">
+                        <span class="glyphicon glyphicon-thumbs-down"></span>
+                        <span data-count="dislike">{{ like_obj.votes.dislikes.count }}</span>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+        </div>
+        <script>
+        function like()
+{
+    var like = $(this);
+    var type = like.data('type');
+    var pk = like.data('id');
+    var action = like.data('action');
+    var dislike = like.next();
+ 
+    $.ajax({
+        url : "/api/" + type +"/" + pk + "/" + action + "/",
+        type : 'POST',
+        data : { 'obj' : pk },
+ 
+        success : function (json) {
+            like.find("[data-count='like']").text(json.like_count);
+            dislike.find("[data-count='dislike']").text(json.dislike_count);
+        }
+    });
+ 
+    return false;
+}
+ 
+function dislike()
+{
+    var dislike = $(this);
+    var type = dislike.data('type');
+    var pk = dislike.data('id');
+    var action = dislike.data('action');
+    var like = dislike.prev();
+ 
+    $.ajax({
+        url : "/api/" + type +"/" + pk + "/" + action + "/",
+        type : 'POST',
+        data : { 'obj' : pk },
+ 
+        success : function (json) {
+            dislike.find("[data-count='dislike']").text(json.dislike_count);
+            like.find("[data-count='like']").text(json.like_count);
+        }
+    });
+ 
+    return false;
+}
+ 
+// Подключение обработчиков
+$(function() {
+    $('[data-action="like"]').click(like);
+    $('[data-action="dislike"]').click(dislike);
+});
+        </script>
+    {% endfor %}
+{% endblock %}    

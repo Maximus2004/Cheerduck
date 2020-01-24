@@ -1,0 +1,82 @@
+{% load static %}
+<html>
+    <head>
+        <title>Cheerduck</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+        <style>
+            h1 a {
+                color: rgb(211, 5, 252)21, 252);
+                font-family: 'Lobster';
+            }
+            body {
+                padding-left: 15px;
+            }
+            .page-header {
+                background-color: #ff9400;
+                margin-top: 0;
+                padding: 20px 20px 20px 40px;
+            }
+
+            .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+                color: #ffffff;
+                font-size: 36pt;
+                text-decoration: none;
+            }
+            .newsugg {
+                padding-right: 90x;
+                font-size: 36pt;
+            }
+            .content {
+                margin-left: 40px;
+            }
+            h1, h2, h3, h4 {
+                font-family: 'Lobster', cursive;
+            }
+            .date {
+                color: #828282;
+            }
+            .content2{
+                margin-top: 0px;
+            }
+            .save {
+                float: right;
+            }
+            .post-form textarea, .post-form input {
+                width: 100%;
+            }
+            .top-menu, .top-menu:hover, .top-menu:visited {
+                color: #ffffff;
+                float: right;
+                font-size: 26pt;
+                margin-right: 20px;
+            }
+            .post {
+                margin-bottom: 30px;
+            }
+            .text {
+                margin-bottom: 10px;
+            }
+            .post h1 a, .post h1 a:visited {
+                color: #656ca7;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page-header">
+                <a href="{% url 'consultation_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                <a href="{% url 'suggs_list' %}" class="top-menu"><span class="glyphicon glyphicon-th-list"></span></a>
+                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-user"></span></a>
+                <h1><a href="/">Cheerduck</a></h1>
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

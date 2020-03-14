@@ -501,8 +501,7 @@ footer{
                         margin-top: 15px;
                         margin-left: 5px;">{{ consultation.owner.username }}</a></aside>
                     <main>{{ consultation.date }}</main>
-                    <footer><h1><a href="{% url 'consultation_detail' pk=consultation.pk %}" style="margin-left: 5px;">{{
-                        consultation.theme }}</a></h1></footer>
+                    <footer><h1><a href="{% url 'consultation_detail' pk=consultation.pk %}" style="margin-left: 5px;">{{ consultation.theme }}</a></h1></footer>
                     <header style="margin-left: 5px;">
                         {{ consultation.discription }}
                     </header>

@@ -1,9 +1,13 @@
 from django.utils import timezone
 from .models import Post, Consultation, UserModel
 from django.shortcuts import get_object_or_404
-from .forms import PostForm, ConsultationForm, SignUp
+from .forms import PostForm, ConsultationForm, SignUp, FilterDate
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
+from django.contrib.postgres.search import SearchQuery, SearchVector, SearchRank
+from django.contrib.postgres.search import TrigramSimilarity
+from django.db.models.functions import Greatest
+from django.db.models import Q
 
 
 def post_list(request):
@@ -13,7 +17,35 @@ def post_list(request):
 
 def cons_list(request):
     consultations = Consultation.objects.order_by('-creation')
-    return render(request, 'consultations/main.html', {'request': request, 'consultations': consultations})
+    form = FilterDate(request.GET)
+    if form.is_valid():
+        if form.cleaned_data["dateFrom"]:
+            consultations = consultations.filter(date__gte=form.cleaned_data["dateFrom"])
+        if form.cleaned_data["dateTo"]:
+            consultations = consultations.filter(date__lte=form.cleaned_data["dateTo"])
+        if form.cleaned_data["search"]:
+            if ' ' in form.cleaned_data["search"]:
+                consultations = consultations.annotate(similarity=Greatest(
+                    TrigramSimilarity('theme', form.cleaned_data["search"]),
+                    TrigramSimilarity('discription', form.cleaned_data["search"]))).filter(
+                    similarity__gte=0.1).order_by('-similarity')
+
+                # consultations = consultations.annotate(
+                #     similarity=TrigramSimilarity('theme', form.cleaned_data["search"]), ).filter(
+                #     similarity__gte=0.1).order_by('-similarity')
+            else:
+                vector = SearchVector('theme', weight='A') + SearchVector('discription', weight='B') # или там, или там, или вместе
+                query = SearchQuery(form.cleaned_data["search"])
+                consultations = consultations.annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.1).order_by('-rank')
+        if form.cleaned_data["contact"]:
+            consultations = consultations.filter(contact=int(form.cleaned_data["contact"][0]))
+        if form.cleaned_data["hashtegs"]:
+            q_lst = form.cleaned_data["hashtegs"][1:len(form.cleaned_data["hashtegs"])].split("#")
+            print(q_lst)
+            consultations = consultations.filter(hashteg__in=q_lst)
+
+    return render(request, 'consultations/main.html',
+                  {'request': request, 'consultations': consultations, 'form': form})
 
 
 def post_new(request):
@@ -60,7 +92,6 @@ def post_detail(request, pk):  # новое представление данн�
 def user_new(request):
     if request.method == "POST":
         form = SignUp(request.POST)
-        print(form)
         if form.is_valid():
             user = form.save(commit=True)
             user.save()
@@ -79,6 +110,8 @@ def cons_new(request):
                 consultation.owner = request.user
                 consultation.creation = timezone.now()
                 consultation.email = request.user.email
+                consultation.hashteg = consultation.hashteg[1:len(consultation.hashteg)].split("#")
+                print(consultation.hashteg)
                 consultation.save()
                 return redirect('consultation_detail', pk=consultation.pk)
         else:
@@ -136,7 +169,7 @@ def likes(request, pk):
         return HttpResponseRedirect("login/")
 
 
-# def grades(request, pk):
+# def grades(request, pk):  
 #     user = get_object_or_404(UserModel, pk = pk)
 #     user.grades += 1
 #     user.save()

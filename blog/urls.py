@@ -1,9 +1,6 @@
 from django.urls import path 
-from . import views, forms
-from django.conf.urls import url
-from django.contrib import admin
-from django.conf.urls import include, url
-from django.conf import settings
+from . import views
+# from .views import SearchResultsView
 from django.contrib.auth import views as v
 
 urlpatterns = [
@@ -27,5 +24,6 @@ urlpatterns = [
     path('cons/<int:pk>/create/', views.create, name='create'),
     path('sugg/similar/<int:pk>/', views.similar, name='similar'),
     path('logout/', v.LogoutView.as_view(), name='logout'),
+    # path('search/', SearchResultsView.as_view(), name='search_results'),
     # path('<int:pk>/grade/', views.grades, name='grade'),
 ]

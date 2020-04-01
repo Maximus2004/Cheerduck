@@ -377,9 +377,16 @@ footer{
                     <tr>
                         <th>{{ consultation.owner.username }}</th>
                     </tr>
-                    <tr>
-                        <td><h4>Электронная почта автора:</h4>{{ consultation.owner.vk }}</td>
-                    </tr>
+                    {% if consultation.owner.vk %}
+                        <tr>
+                            <td><h4>Ссылка на аккаунт ВК:</h4>{{ consultation.owner.vk }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if not consultation.owner.vk %}
+                        <tr>
+                            <td><h4>Почта:</h4>{{ consultation.owner.email }}</td>
+                        </tr>
+                    {% endif %}
                     <tr>
                         <td><h4>Имя:</h4>{{ consultation.owner.first_name }}</td>
                     </tr>

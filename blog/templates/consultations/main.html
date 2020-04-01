@@ -494,6 +494,11 @@ footer{
         </style>
     </head>
     <body>
+        <form action="" method="get">
+            {{ form.as_p }}
+<!--            <input name="q" type="text" placeholder="Search...">-->
+            <input type="submit" value="Search">
+        </form>
         {% for consultation in consultations %}
             <div class="content">
                 <div id="wrapper">

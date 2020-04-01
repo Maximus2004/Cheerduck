@@ -1,11 +1,7 @@
 from django.conf import settings
 from django.utils import timezone
-
 from django.db import models
-from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from django.contrib.auth.models import AbstractUser, PermissionsMixin
+from django.contrib.auth.models import AbstractUser
 
 
 class Post(models.Model):
@@ -27,7 +23,7 @@ class Post(models.Model):
 
 class UserModel(AbstractUser):
     form = models.CharField(max_length=2)
-    vk = models.CharField(max_length=200, default="")
+    vk = models.CharField(max_length=200, default="", blank=True, null=True)
     # grades = models.IntegerField(default=0)
     USERNAME_FIELD = "username"
 
@@ -39,9 +35,8 @@ class Consultation(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default="")
     creation = models.DateTimeField(default=timezone.now, editable=False)
     date = models.DateTimeField("Дата проведения лекции-консультации", default=timezone.now)
-    email = models.EmailField("Ваша почта", default="")  # предназначен для ввода адреса электронной почты и создает
-    # следующую разметку:
-    theme = models.TextField("Общая тема лекции-консультации", default="")  # ограниченый размер переменной
+    email = models.EmailField("Ваша почта", default="")  # предназначен для ввода адреса электронной почты
+    theme = models.TextField("Общая тема лекции-консультации", default="")
     discription = models.TextField("Подробное раскрытие темы", default="")
     spectators = models.TextField("Целевая аудитория", default="")
     longliness = models.CharField('Продолжительность консультации', max_length=20, default="")
@@ -49,6 +44,8 @@ class Consultation(models.Model):
     posts = models.ForeignKey(Post, on_delete=models.CASCADE, default="", blank=True, null=True)
     contact = models.IntegerField('Форма взаимодействия', choices=[(1, "Очно"), (2, "Заочно")], default="")
     place = models.CharField('Место проведения', max_length=20, default="")
+    hashteg = models.CharField('Место проведения', max_length=200, default="")
+    hashtegs = []
 
     def publish(self):
         self.creation = timezone.now()

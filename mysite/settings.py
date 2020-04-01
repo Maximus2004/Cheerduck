@@ -42,15 +42,6 @@ AUTH_PROFILE_MODULE = 'blog.UserModel'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 AUTH_USER_MODEL = 'blog.UserModel'
 
-# Application definition
-
-# ACCOUNT_LOGIN_URL = 'blog:account_login'
-# ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = ACCOUNT_LOGIN_URL
-# ACCOUNT_PASSWORD_RESET_REDIRECT_URL = ACCOUNT_LOGIN_URL
-# ACCOUNT_EMAIL_CONFIRMATION_URL = "blog:account_confirm_email"
-# ACCOUNT_SETTINGS_REDIRECT_URL = 'blog:account_settings'
-# ACCOUNT_PASSWORD_CHANGE_REDIRECT_URL = "blog:account_password"
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',  # Фреймворк аутентификации и моделей по умолчанию.
@@ -58,11 +49,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     'blog',
     'crispy_forms',
 ]
 
-LOGIN_REDIRECT_URL =  '/'
+LOGIN_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -75,12 +67,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mysite.urls'
-
-# DEFAULT_FROM_EMAIL = 'maks09062004@mail.ru'
-# EMAIL_HOST = "smtp.yoursmtpserver.ru"
-# EMAIL_PORT = 25
-# EMAIL_HOST_USER = "user"
-# EMAIL_HOST_PASSWORD = "pass"
 
 TEMPLATES = [
     {
@@ -104,14 +90,33 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': '09062004m',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'database',
+#         'USER': 'Maximusc',
+#         'PASSWORD': '09062004m',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
 #     }
 # }
 
-DATABASES = {'default': dj_database_url.config()}
+# DATABASES = {
+#     'default': dj_database_url.config(default='postgres://localhost:5432/database'),
+# }
+
+# DATABASES = {'default': dj_database_url.config()}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

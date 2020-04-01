@@ -377,8 +377,13 @@
                             <td>{{ user.username }}</td>
                         </tr>
                         <tr>
-                            <td><h4>Электронная почта автора:</h4>{{ user.vk }}</td>
+                            <td><h4>Электронная почта автора:</h4>{{ user.email }}</td>
                         </tr>
+                        {% if user.vk %}
+                            <tr>
+                                <td><h4>Ссылка на ВК:</h4>{{ user.vk }}</td>
+                            </tr>
+                        {% endif %}
                         <tr>
                             <td><h4>ФИ:</h4>{{ user.last_name }} {{ user.first_name }}</td>
                         </tr>

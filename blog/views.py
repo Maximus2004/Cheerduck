@@ -1,4 +1,7 @@
+from django.core.mail import send_mail
 from django.utils import timezone
+from django.utils.crypto import get_random_string
+from mysite import settings
 from .models import Post, Consultation, UserModel
 from django.shortcuts import get_object_or_404
 from .forms import PostForm, ConsultationForm, SignUp, FilterDate
@@ -90,14 +93,22 @@ def post_detail(request, pk):  # новое представление данн�
 
 
 def user_new(request):
+    password = get_random_string(5)
     if request.method == "POST":
-        form = SignUp(request.POST)
+        # userm = UserModel(password1=password, password2=password)
+        # print(password)
+        form = SignUp(request.POST, initial={'password1': password, 'password2': password})
         if form.is_valid():
-            user = form.save(commit=True)
+            user = form.save(commit=False)
+            # password = get_random_string(5)
+            # user.password1 = password
+            # user.password2 = password
+            send_mail('Подтверждение регистрации на Cherdak', 'Имя пользователя:' + '\n' +
+                      'Пароль: ' + password, settings.EMAIL_HOST_USER, [user.email])
             user.save()
             return redirect('login')
     else:
-        form = SignUp()
+        form = SignUp(initial={'password1': password, 'password2': password})
     return render(request, 'user/signup.html', {'form': form})
 
 
@@ -169,7 +180,7 @@ def likes(request, pk):
         return HttpResponseRedirect("login/")
 
 
-# def grades(request, pk):  
+# def grades(request, pk):
 #     user = get_object_or_404(UserModel, pk = pk)
 #     user.grades += 1
 #     user.save()

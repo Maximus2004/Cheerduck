@@ -33,7 +33,9 @@ class FilterDate(forms.Form):
 
 class SignUp(UserCreationForm):
     form = forms.CharField(max_length=2, help_text='Введите класс, в котором вы обучаетесь')
+    # password1 = UserModel.password1
+    # password2 = UserModel.password2
 
     class Meta:
         model = UserModel
-        fields = ('form', 'email', 'password1', 'password2', 'username', 'first_name', 'last_name', 'vk',)
+        fields = ('form', 'email', 'username', 'password1', 'password2', 'first_name', 'last_name', 'vk',)

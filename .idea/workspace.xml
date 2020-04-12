@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aa3f93d5-6c70-470b-97a8-3c7af8b7ede0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/migrations/0003_auto_20200329_1629.py" afterDir="false" />
+    <list default="true" id="aa3f93d5-6c70-470b-97a8-3c7af8b7ede0" name="Default Changelist" comment="filters">
+      <change afterPath="$PROJECT_DIR$/runtime.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/migrations/0002_auto_20200308_2337.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/migrations/0003_auto_20200329_1629.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/migrations/0004_auto_20200329_1630.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/migrations/0005_consultation_hashteg.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/consultations/main_search.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/templates/consultations/create_consultation.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/consultations/create_consultation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/templates/consultations/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/consultations/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/templates/user/main_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/user/main_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/templates/user/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/user/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/templates/user/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/user/signup.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datadump.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dump.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/wsgi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
-    <list id="ed476f99-bc87-4097-b98f-cfd742eca04b" name="Revert &quot;dirs&quot;" comment="Revert &quot;dirs&quot;&#10;&#10;This reverts commit c74d8178">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
-    <file path="$PROJECT_DIR$/README.md" ignored="true" />
+    <list id="ed476f99-bc87-4097-b98f-cfd742eca04b" name="Revert &quot;dirs&quot;" comment="Revert &quot;dirs&quot;&#10;&#10;This reverts commit c74d8178" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,21 +79,27 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="filters" />
+    <option name="LAST_COMMIT_MESSAGE" value="filters" />
   </component>
   <component name="WindowStateProjectService">
     <state x="442" y="167" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583685533598">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="442" y="167" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1583685533598" />
-    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583673250690">
+    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586012990032">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1583673250690" />
+    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1586012990032" />
     <state x="337" y="0" key="CommitChangelistDialog2" timestamp="1585755718887">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -104,13 +112,13 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1584986140872" />
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1585583604506">
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1586703206938">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1585583604506" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1585493069264">
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1586703206938" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1585939365164">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1585493069264" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1585939365164" />
   </component>
 </project>

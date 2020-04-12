@@ -100,8 +100,8 @@
         <a class="nav-button" href="{% url 'logout' %}">Выйти</a>
         {% endif %}
         {% if not request.user.username %}
-        <a class="nav-button" href="{% url 'login' %}">Войти</a>
-        <a class="nav-button" href="{% url 'signup' %}">Зарегистрироваться</a>
+            <a class="nav-link" href="#"><a class="buttons" href="{% url 'login' %}">Войти</a></a>
+            <a class="nav-link" href="#"><a class="buttons" href="{% url 'signup' %}">Регистрация</a></a>
         {% endif %}
         <ul class="nav-links">
             <a class="nav-link" href="#"><a class="buttons" href="{% url 'suggs_list' %}">Список тем</a></a>
@@ -142,3 +142,4 @@
         navSide();
     </script>
 </html>
+

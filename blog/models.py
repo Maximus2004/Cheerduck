@@ -2,6 +2,7 @@ from django.conf import settings
 from django.utils import timezone
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils.crypto import get_random_string
 
 
 class Post(models.Model):
@@ -22,8 +23,11 @@ class Post(models.Model):
 
 
 class UserModel(AbstractUser):
+    # passwar = get_random_string(5)
+    # password1 = models.CharField(max_length=6, default=passwar)
+    # password2 = models.CharField(max_length=6, default=passwar)
     form = models.CharField(max_length=2)
-    vk = models.CharField(max_length=200, default="", blank=True, null=True)
+    vk = models.CharField(max_length=200, default=get_random_string(5), blank=True, null=True)
     # grades = models.IntegerField(default=0)
     USERNAME_FIELD = "username"
 

@@ -1,0 +1,145 @@
+{% load static %}
+<html>
+    <head>
+        <style>
+            * {
+        font-family: "Domine", serif;
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    body {
+        background:#1b1d30;
+        background-size: cover;
+        background-attachment: fixed;
+        color: aliceblue;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        min-height: 9vh;
+        background: rgba(0, 0, 0, 0.8);
+        width: 100%;
+    }
+
+    .nav-button {
+        color: rgb(255, 255, 255);
+        font-size: 25px;
+        font-weight: 800;
+        text-decoration: none;
+    }
+    .nav-link {
+        color: rgb(255, 255, 255);
+        font-size: 45px;
+        font-weight: 900;
+        text-decoration: none;
+    }
+
+    @media screen{
+        body {
+            overflow-x: hidden;
+        }
+        .nav-links {
+            position: absolute;
+            right: 0px;
+            height: 82vh;
+            top: 8vh;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 45%;
+          transform: translateX(100%);
+          transition: transform 0.5s ease-in;
+        }
+        .nav-links li {
+            opacity: 0;
+        }
+        .burger {
+            display: block;
+        }
+    }
+
+    .nav-active{
+       transform: translate(0%);
+    }
+
+    @keyframes navLinkFade{
+       from{
+          opacity: 0;
+          transform: translateX(50px);
+       }
+       to{
+          opacity: 1;
+          transform: translateX(0px);
+       }
+    }
+
+    .logo {
+        color: rgba(255, 255, 255, 0.952);
+        font-size: 30px;
+        font-weight: 800;
+        font-family: monospace;
+        text-transform: uppercase;
+        padding-left: 10px;
+        letter-spacing: 1px;
+    }
+
+
+
+
+    </style>
+    </head>
+    <nav>
+        <div class="logo"><a href='/'>cheerduck</a></div>
+        {% if request.user.username %}
+        <a class="nav-button" href="{% url 'main_profile' %}">{{ request.user.username }}</a>
+        <a class="nav-button" href="{% url 'logout' %}">Выйти</a>
+        {% endif %}
+        {% if not request.user.username %}
+            <a class="nav-link" href="#"><a class="buttons" href="{% url 'login' %}">Войти</a></a>
+            <a class="nav-link" href="#"><a class="buttons" href="{% url 'signup' %}">Регистрация</a></a>
+        {% endif %}
+        <ul class="nav-links">
+            <a class="nav-link" href="#"><a class="buttons" href="{% url 'suggs_list' %}">Список тем</a></a>
+            <a class="nav-link" href="#"><a class="buttons" href="{% url 'consultation_new' %}">Создать </a></a>
+            <a class="nav-link" href="#"><a class="buttons" href="{% url 'sugg_new' %}">Создать тему</a></a>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <script>
+            const navSide = () => {
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav-links');
+            const navLinks = document.querySelectorAll('.nav-links li');
+
+
+            //Toggle nav
+            burger.addEventListener("click", () => {
+                nav.classList.toggle("nav-active");
+
+                //Animate Links
+                navLinks.forEach((link, index) => {
+                    if (link.style.animation) {
+                        link.style.animation = "";
+                    } else {
+                        link.style.animation = `navLinkFade 1s ease forwards ${index / 6 +
+                            1}s`;
+                    }
+                });
+            });
+        };
+
+        navSide();
+    </script>
+</html>
+

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Edit</h1>
+    <form method="POST" class="user-form">{% csrf_token %}
+        Время и дата проведения консультации
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Push</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,329 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <head>
+        <link
+                href="https://fonts.googleapis.com/css?family=Domine&display=swap"
+                rel="stylesheet"
+        />
+        <title>Создание заявки</title>
+        <style>
+              * {
+        font-family: "Domine", serif;
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    body {
+        background:#1b1d30;
+        background-size: cover;
+        background-attachment: fixed;
+        color: aliceblue;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        min-height: 9vh;
+        background: rgba(0, 0, 0, 0.8);
+        width: 100%;
+    }
+
+    .logo {
+        color: rgba(255, 255, 255, 0.952);
+        font-size: 30px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0px;
+        padding-left: 10px;
+    }
+
+    .nav-button {
+        color: rgb(255, 255, 255);
+        font-size: 25px;
+        font-weight: 800;
+        text-decoration: none;
+    }
+    .nav-link {
+        color: rgb(255, 255, 255);
+        font-size: 45px;
+        font-weight: 900;
+        text-decoration: none;
+    }
+
+    .content {
+        border-radius: 1%;
+        padding: 40px;
+        margin: 50px auto;
+        background: rgba(22, 26, 29, 0.801);
+        width: 80%;
+        color: rgba(255, 255, 255, 0.952);
+        font: normal 20px arial;
+        border: 2px solid #b4b2b2;
+        box-shadow: 0 0 15px #716abd;
+        border-radius: 10px;
+        font-size: 30px;
+
+    }
+
+    .cont {
+        border-radius: 1%;
+        padding: 40px;
+        margin: 40px auto;
+        background: rgba(22, 26, 29, 0.801);
+        width: 30%;
+        color: rgba(255, 255, 255, 0.952);
+        font: normal 20px arial;
+        border: 2px solid #b4b2b2;
+        box-shadow: 0 0 15px #716abd;
+        border-radius: 10px;
+        align-self: left;
+        vertical-align:middle;
+    }
+
+
+    .content p {
+        padding: 10px 0px 10px 0px;
+        font-size: 30px;
+    }
+    a.buttons {
+        width: 240px;
+        height: 40px;
+        text-decoration: none;
+        padding-top: 7px;
+        color: #f8f8f8e0;
+        text-align: center;
+        line-height: 15px;
+        display: block;
+        margin: 20px auto;
+        font: normal 20px arial;
+      }
+      a.bot1{
+        background:linear-gradient(to bottom, #FFFFFF, #E6E6E6) #F5F5F5 repeat-x;
+        border-color: rgba(84, 96, 82, 1);
+        font-family: monospace;
+        border-radius: 4px;
+        border-style: solid;
+        border-width: 1px;
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+        color: #333333;
+        text-decoration:none;
+        display:block;
+        font-size: 14px;
+        width:120px;
+        line-height: 20px;
+        margin: 20px auto;
+        padding: 4px 12px;
+        text-align: center;
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+        position: relative;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-property: -webkit-transform;
+        transition-property: transform;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        }
+
+
+    a.bot1:before {
+      pointer-events: none;
+      position: absolute;
+      z-index: -1;
+      content: '';
+      top: 100%;
+      left: 5%;
+      height: 10px;
+      width: 90%;
+      opacity: 0;
+      background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      -webkit-transition-property: -webkit-transform, opacity;
+      transition-property: transform, opacity;
+    }
+
+    a.bot1:hover {
+      -webkit-transform: translateY(-5px);
+      -ms-transform: translateY(-5px);
+      transform: translateY(-5px);
+    }
+    a.bot1:hover:before {
+      opacity: 1;
+      -webkit-transform: translateY(5px);
+      -ms-transform: translateY(5px);
+      transform: translateY(5px);
+    }
+    main, aside, header, footer{
+        border:1px solid black;
+        display: flex;
+        padding: 7px;
+    }
+    .burger {
+        display: none;
+        cursor: pointer;
+        }
+
+    .burger div {
+        width: 33px;
+        height: 3px;
+        background: white;
+        margin: 8px;
+    }
+
+    @media screen{
+        body {
+            overflow-x: hidden;
+        }
+        .nav-links {
+            position: absolute;
+            right: 0px;
+            height: 82vh;
+            top: 8vh;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50%;
+          transform: translateX(100%);
+          transition: transform 0.5s ease-in;
+        }
+        .nav-links li {
+            opacity: 0;
+        }
+        .burger {
+            display: block;
+        }
+    }
+
+    .nav-active{
+       transform: translate(0%);
+    }
+
+    @keyframes navLinkFade{
+       from{
+          opacity: 0;
+          transform: translateX(50px);
+       }
+       to{
+          opacity: 1;
+          transform: translateX(0px);
+       }
+    }
+
+    .buttons {
+        text-decoration: none;
+        padding-top: 10px;
+        color: #f8f8f8e0;
+        text-align: center;
+        line-height: 15px;
+        display: block;
+        border:none;
+        margin: 20px auto;
+        font: normal 20px arial;
+        box-shadow: inset 0 1px 1px rgba(125, 118, 55, 0.8), inset 0 -1px 0px rgba(63, 59, 113, 0.2), 0 9px 16px 0 rgba(0, 0, 0, 0.3), 0 4px 3px 0 rgba(0, 0, 0, 0.3), 0 0 0 1px #150a1e;
+        background-image: linear-gradient(#34374e, #061d20);
+        text-shadow: 0 0 21px rgba(228, 206, 206, 0.5), 0 -1px 0 #000000;
+        transition: color 200ms linear, text-shadow 500ms linear;
+        color: #fff;
+        text-shadow: 0 0 21px rgba(179, 231, 240, 0.5), 0 0 10px rgba(228, 218, 206, 0.4), 0 0 2px #3c2c15;
+        transition: 0.6s;
+      }
+      a:link {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        font-family: monospace;
+    }
+      a:visited {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        font-family: monospace;
+    }
+      a:hover {
+        color: rgb(221, 132, 73);
+        text-decoration: none;
+        font-family:  monospace;
+        letter-spacing: 0px;
+    }
+      a:active {
+        color: rgb(221, 132, 73);
+        text-decoration: none;
+        font-family: monospace;
+      }
+      table {
+        font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+        font-size: 25px;
+        max-width: 80%;
+        width: 80%;
+        border-collapse: collapse;
+        text-align: left;
+      }
+      th {
+        font-size:40px;
+        color: rgb(146, 163, 197);
+        border-bottom: 2px solid #6678b1;
+        padding: 10px 8px;
+      }
+      td {
+        color: rgb(210, 210, 214);
+        padding: 9px 8px;
+        transition: .3s linear;
+      }
+      tr:hover td {color: rgb(221, 132, 73)}
+      h4{
+        font-family: technic;
+        color:rgb(225, 227, 230)
+      }
+      textarea {
+        background-color:#1b1d30;;
+        box-shadow: 0 0 15px #716abd;
+        color: white;
+        padding-top: 10px;
+        padding-left: 13px;
+        border:1px;
+        width:80%;
+        font-size: 20px;
+        border-radius: 10px;
+      }
+      input {
+        background-color:#1b1d30;;
+        box-shadow: 0 0 15px #716abd;
+        border:1px;
+        height:35px;
+        color: white;
+        font-size: 20px;
+        padding-left: 13px;
+        border-radius: 10px;
+      }
+      .summary{
+        font-family: cursive;
+        font-size: 60px;
+        color: rgba(255, 255, 255, 0.952);
+        margin-left: 50px;
+    }
+
+        </style>
+    </head>
+    <body>
+        <div class="content">
+            <form method="POST" class="post-form">{% csrf_token %}
+                <div class="input2">
+                    <p>Удобная вам дата проведения лекции-консультации:
+                    <p> {{ form.good_date }}</p>
+                    <p>Какую тему для лекции вы хотели бы предложить:
+                    <p>{{ form.title }}</p>
+                    <p>Какие аспекты должны быть раскрыты :
+                    <p>{{ form.text }}</p>
+                    <button type="submit" class="buttons">Предложить</button>
+                </div>
+            </form>
+
+        </div>
+    </body>
+{% endblock %}

@@ -1,3 +1,4 @@
+import os
 from django.core.mail import send_mail
 from django.utils import timezone
 from django.utils.crypto import get_random_string
@@ -6,7 +7,7 @@ from .models import Post, Consultation, UserModel
 from django.shortcuts import get_object_or_404
 from .forms import PostForm, ConsultationForm, SignUp, FilterDate
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.postgres.search import SearchQuery, SearchVector, SearchRank
 from django.contrib.postgres.search import TrigramSimilarity
 from django.db.models.functions import Greatest
@@ -50,6 +51,11 @@ from rest_framework.renderers import TemplateHTMLRenderer
 #         return Response({
 #             "message": "Post with id `{}` has been deleted.".format(pk)
 #         }, status=204)
+
+
+def index(request):
+    times = int(os.environ.get('TIMES', 3))
+    return HttpResponse('Hello! ' * times)
 
 
 def post_list(request):

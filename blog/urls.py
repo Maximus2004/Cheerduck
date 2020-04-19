@@ -1,12 +1,13 @@
 from django.urls import path
 from . import views
 from django.contrib.auth import views as v
-from .views import PostView
+# from .views import PostView
 
 urlpatterns = [
     path('', views.cons_list, name='cons_list2'),
-    path('suggs/', PostView.as_view(), name='suggs_list'),
-    path('suggs/<int:pk>', PostView.as_view()), # отредактировать предложение
+    # path('suggs/', PostView.as_view(), name='suggs_list'),
+    # path('suggs/<int:pk>', PostView.as_view()), # отредактировать предложение
+    path('suggs/', views.post_list, name='suggs_list'),
     path('cons/<int:pk>/', views.cons_detail, name='consultation_detail'),
     path('sugg/<int:pk>/', views.post_detail, name='post_detail'),
     path('sugg/new/', views.post_new, name='sugg_new'),

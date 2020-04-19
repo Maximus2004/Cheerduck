@@ -15,39 +15,46 @@ from django.db.models import Q
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import PostSerializer
+from rest_framework.renderers import TemplateHTMLRenderer
 
 
-class PostView(APIView):
-    def get(self, request):
-        posts = Post.objects.order_by('-likes')
-        serializer = PostSerializer(posts, many=True)
-        return Response({"posts": serializer.data})
+# class PostView(APIView):
+#     def get(self, request):
+#         posts = Post.objects.order_by('-likes')
+#         serializer = PostSerializer(posts, many=True)
+#         return Response({"posts": serializer.data})
+#
+#     def post(self, request):
+#         post = request.data.get('post')
+#         # Create an article from the above data
+#         serializer = PostSerializer(data=post)
+#         if serializer.is_valid(raise_exception=True):
+#             post_saved = serializer.save()
+#             return redirect('profile-list')
+#         return Response({"success": "Post '{}' created successfully".format(post_saved.title)})
+#
+#     def put(self, request, pk): # редактирование предложения
+#         saved_article = get_object_or_404(Post.objects.all(), pk=pk)
+#         data = request.data.get('post')
+#         serializer = PostSerializer(instance=saved_article, data=data, partial=True)
+#         if serializer.is_valid(raise_exception=True):
+#             post_saved = serializer.save()
+#         return Response({
+#             "success": "Post '{}' updated successfully".format(post_saved.title)
+#         })
+#
+#     def delete(self, request, pk):
+#         # Get object with this pk
+#         article = get_object_or_404(Post.objects.all(), pk=pk)
+#         article.delete()
+#         return Response({
+#             "message": "Post with id `{}` has been deleted.".format(pk)
+#         }, status=204)
 
-    def post(self, request):
-        post = request.data.get('post')
-        # Create an article from the above data
-        serializer = PostSerializer(data=post)
-        if serializer.is_valid(raise_exception=True):
-            post_saved = serializer.save()
-        return Response({"success": "Post '{}' created successfully".format(post_saved.title)})
 
-    def put(self, request, pk): # редактирование предложения
-        saved_article = get_object_or_404(Post.objects.all(), pk=pk)
-        data = request.data.get('post')
-        serializer = PostSerializer(instance=saved_article, data=data, partial=True)
-        if serializer.is_valid(raise_exception=True):
-            post_saved = serializer.save()
-        return Response({
-            "success": "Post '{}' updated successfully".format(post_saved.title)
-        })
-
-    def delete(self, request, pk):
-        # Get object with this pk
-        article = get_object_or_404(Post.objects.all(), pk=pk)
-        article.delete()
-        return Response({
-            "message": "Post with id `{}` has been deleted.".format(pk)
-        }, status=204)
+def post_list(request):
+    posts = Post.objects.order_by('-likes')
+    return render(request, 'suggestions/list_suggs.html', {'request': request, 'posts': posts})
 
 
 def cons_list(request):

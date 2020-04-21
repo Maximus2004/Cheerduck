@@ -6,3 +6,5 @@ myvenv
 /static
 .DS_Store
 migrations
+.python-version
+Pipfile.lock
